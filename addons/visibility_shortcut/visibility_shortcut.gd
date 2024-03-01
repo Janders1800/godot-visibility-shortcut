@@ -6,7 +6,6 @@ var undo_redo : EditorUndoRedoManager = get_undo_redo()
 
 
 func _shortcut_input(event: InputEvent) -> void:
-	EditorSettings
 	if event is InputEventKey and event.is_pressed() and Input.is_key_pressed(KEY_H):
 		var selected_nodes : Array[Node] = get_editor_interface().get_selection().get_selected_nodes()
 		
