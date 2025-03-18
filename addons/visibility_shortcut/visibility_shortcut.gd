@@ -11,14 +11,7 @@ func _shortcut_input(event: InputEvent) -> void:
 		
 		undo_redo.create_action("Set visible")
 		for node in selected_nodes:
-			if node.has_method("hide"):
-				if node.visible:
-					# Hide node.
-					undo_redo.add_do_property(node, "visible", false)
-					undo_redo.add_undo_property(node, "visible", true)
-				else:
-					# Show node.
-					undo_redo.add_do_property(node, "visible", true)
-					undo_redo.add_undo_property(node, "visible", false)
+			if "visible" in node:
+				undo_redo.add_do_property(node, "visible", !node.visible)
+				undo_redo.add_undo_property(node, "visible", node.visible)
 		undo_redo.commit_action()
-
